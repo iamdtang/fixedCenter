@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fixed Center Plugin Demo 2</title>
+<!-- main jquery file that must be included to use jquery. you might already have this in your page -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<!-- absolute center plugin js file -->
+<script type="text/javascript" src="fixedCenter.jQuery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#btn1').click(function(){
+		$('#div1').fixedCenter().fadeIn(300);
+	});
+});
+</script>
+
+<style type="text/css">
+body {
+	height: 700px;
+}
+#container {
+	width: 700px;
+	margin: 10px auto;
+	background-color: white;
+	padding: 20px;
+	height: 300px;
+	border: 2px solid black;
+}
+h1 {
+	text-align: center;
+}
+#div1 {
+	width: 400px;
+	border:5px solid #999;
+	background-color: #bbb;
+	padding:10px;
+	text-align: center;
+	display: none;
+}
+
+</style>
+</head>
+<body>
+<div id="container">
+<h1>Fixed Center jQuery Plugin</h1>
+<div id="div1">
+	<p>This div will stay in the middle of the page.</p>
+</div>
+<input type="button" value="click me" id="btn1" />
+<p>This jQuery plugin centers an element on the page using fixed positioning and keeps the element centered if you scroll horizontally or vertically and resize the browser.</p>
+</div>
+</body>
+</html>
