@@ -39,8 +39,8 @@ jQuery('#my-element').fixedCenter(); would center the element with ID 'my-elemen
 
 			function centerElement(){
 				var elementWidth, elementHeight, windowWidth, windowHeight, X2, Y2;
-				elementWidth = element.outerWidth();
-				elementHeight = element.outerHeight();
+				elementWidth = element.outerWidth(true);
+				elementHeight = element.outerHeight(true);
 				windowWidth = win.width();
 				windowHeight = win.height();	
 				X2 = (windowWidth/2 - elementWidth/2) + "px";
