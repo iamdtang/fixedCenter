@@ -3,15 +3,10 @@
 Fixed Center
 
 @version:
-1.3
+1.4
 
 @author:
 David Tang
-
-@date:
-2010-12-06 - performance issues update
-2010-06-27 - updated plugin to use fixed positioning instead of absolute
-2010-06-17 - released version 1 of the plugin
 
 @url
 www.david-tang.net
@@ -30,13 +25,15 @@ if you scroll horizontally or vertically.
 jQuery('#my-element').fixedCenter(); would center the element with ID 'my-element' using absolute positioning 
 
 */
-(function(){
+(function($) {
 	jQuery.fn.fixedCenter = function(){
 		return this.each(function(){
-			var element = jQuery(this), win = jQuery(window);
+			var element = $(this), 
+				win = $(window);
+			
 			centerElement();
 			
-			jQuery(window).bind('resize',function(){
+			win.bind('resize',function(){
 				centerElement();
 			});
 
@@ -53,7 +50,7 @@ jQuery('#my-element').fixedCenter(); would center the element with ID 'my-elemen
 					'top':Y2,
 					'position':'fixed'
 				});						
-			} //centerElement function
+			}
 		});
-	}
-})();
+	};
+})(jQuery);
