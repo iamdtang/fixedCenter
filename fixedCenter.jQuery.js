@@ -3,23 +3,35 @@
  * @author: David Tang
  * @copyright: 2012 David Tang
  * @requires: jQuery
- * @does: This plugin centers an element on the page using fixed positioning and keeps the element centered 
+ * @does: This plugin centers an element on the page using fixed positioning and keeps the element centered
  * if you scroll horizontally or vertically.
- * @howto: $('#my-element').fixedCenter(); would center the element with ID 'my-element' 
+ * @howto: $('#my-element').fixedCenter(); would center the element with ID 'my-element'
  */
 
 (function($) {
-	jQuery.fn.fixedCenter = function(){
-		return this.each(function(){
-			var $element = $(this), 
-				$win = $(window);
+	jQuery.fn.fixedCenter = function(options) {
+
+		var settings = $.extend({}, options);
+
+		return this.each(function() {
+			var $element = $(this);
+			var $win = $(window);
+			var that = this;
 			
+
+			if (settings.close) {
+				$('.fc-close').on('click', function() {
+					settings.close.call(that);
+				});
+			}
+
+
 			function centerElement(){
 				var elementWidth, elementHeight, windowWidth, windowHeight, X2, Y2;
 				elementWidth = $element.outerWidth(true);
 				elementHeight = $element.outerHeight(true);
 				windowWidth = $win.width();
-				windowHeight = $win.height();	
+				windowHeight = $win.height();
 				X2 = (windowWidth/2 - elementWidth/2);
 				Y2 = (windowHeight/2 - elementHeight/2);
 
@@ -34,7 +46,7 @@
 				});
 				//console.log('top', Y2);
 				//console.log('windowHeight', windowHeight);
-				//console.log('elementHeight', elementHeight);						
+				//console.log('elementHeight', elementHeight);
 			}
 			
 			$win.bind('resize',function(){
